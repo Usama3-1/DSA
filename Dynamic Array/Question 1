@@ -1,0 +1,98 @@
+
+#include <iostream>
+using namespace std;
+
+class item {
+private:
+    float price;
+    int Id;
+    int Quantity;
+    int itemSoldPerDay;
+    string name;
+
+public:
+    void setDetails(float p, int id, int q, int is, string n) {
+        price = p;
+        Id = id;
+        Quantity = q;
+        itemSoldPerDay = is;
+        name = n;
+    }
+
+    float getPrice() const {
+        return price;
+    }
+    string getName() {
+        return name;
+    }
+    void print() const {
+        cout << "Price: " << price
+            << ", ID: " << Id
+            << ", Quantity: " << Quantity
+            << ", Sold per day: " << itemSoldPerDay
+            << ", Name: " << name << endl;
+    }
+};
+
+int main() {
+    int size = 2;
+    item A[2];    
+
+   
+    for (int i = 0; i < size; i++) {
+        float price;
+        int id, quan, IS;
+        string name;
+
+        cout << "Enter details for item " << i + 1 << ":\n";
+        cout << "Price: ";
+        cin >> price;
+        cout << "ID: ";
+        cin >> id;
+        cout << "Quantity: ";
+        cin >> quan;
+        cout << "Items sold per day: ";
+        cin >> IS;
+        cout << "Name: ";
+        cin >> name;
+
+        A[i].setDetails(price, id, quan, IS, name);
+    }
+
+    
+    cout << " Item details:" << endl;
+    for (int i = 0; i < size; i++) {
+        cout << "Item " << i + 1 << ": ";
+        A[i].print();
+    }
+
+   
+    float mostFrequentPrice = 0;
+    string mostFrequentProduct = "";
+    int maxCount = 0;
+
+    for (int i = 0; i < size; i++) {
+        int count = 1;
+        for (int j = i + 1; j < size; j++) {
+            if (A[i].getName() == A[j].getName()) {
+                count++;
+            }
+        }
+        if (count > maxCount) {
+            maxCount = count;
+        
+            mostFrequentProduct = A[i].getName();
+        }
+    }
+
+    
+    if (maxCount > 1) {
+        cout << " The most frequent price is: " << mostFrequentProduct
+            << " (occurred " << maxCount << " times)" << endl;
+    }
+    else {
+        cout << " No Product is repeated." << endl;
+    }
+
+    return 0;
+}
