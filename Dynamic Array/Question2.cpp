@@ -1,0 +1,103 @@
+// Question2.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int max(int **array, int& rows, int& cols)
+{
+    int maxValue = array[0][0];
+    for (int i = 0;i < rows;i++)
+    {
+        for (int j = 0; j < cols ; j++)
+        {
+            if (array[i][j] > maxValue)
+            {
+                maxValue = array[i][j];
+            }
+        }
+    }
+    return maxValue;
+}
+
+void Even(int **array,int rows,int cols)
+{
+    int evenNum ;
+    for (int i = 0;i < rows;i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            if (array[i][j] %2== 0)
+            {
+                evenNum = array[i][j];
+                cout << "" << evenNum << " " << endl;
+            }
+        }
+    }
+    
+}
+
+void Odd(int** array, int rows, int cols)
+{
+   
+    for (int i = 0;i < rows;i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            if (array[i][j] % 2 != 0)
+            {
+                array[i][j]=0;
+            }
+        }
+    }
+}
+int Daigonal(int** array, int rows, int cols)
+{
+    int sum = 0;
+    for (int i = 0;i < rows;i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            if (i == j)
+            {
+                sum = sum + array[i][j];
+                break;
+            }
+        }
+    }
+    return sum;
+} 
+
+
+int main()
+{
+    int rows;
+    int cols;
+    
+    cout << "Enter the number of rows: ";
+    cin >> rows;
+    cout << "Enter the number of columns: ";
+    cin >> cols;
+
+    int** array = new int* [rows];
+    for (int i = 0; i < rows; i++) {
+        array[i] = new int[cols];
+    }
+
+    cout << "Enter the elements of the array:" << endl;
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cout << "Enter value for [" << i << "][" << j << "]: ";
+            cin >>array[i][j];
+        }
+    }
+    int value;
+    value=max(array, rows, cols);
+    cout << value << endl;
+    Even(array, rows, cols);
+
+
+    return 0;
+}
+
