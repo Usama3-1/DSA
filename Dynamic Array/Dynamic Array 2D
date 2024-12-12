@@ -21,6 +21,15 @@ int max(int **array, int& rows, int& cols)
     return maxValue;
 }
 
+/* int sumDiagonal(int** arr, int rows, int cols) {
+    int sum = 0;
+    int minDim = min(rows, cols);  
+    for (int i = 0; i < minDim; ++i) {  
+        sum = sum + arr[i][i];  
+    }
+    return sum;
+}*/
+
 void Even(int **array,int rows,int cols)
 {
     int evenNum ;
